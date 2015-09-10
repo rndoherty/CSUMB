@@ -25,31 +25,26 @@ public class Assig2 {
      */
     public static void main (String[] args) throws IOException {  
        
-        //TODO: Complete user input and getBet()
-        /*
-        int bet=-1;
+        Scanner scan = new Scanner(System.in);
+        int bet=getBet(scan);
         
         while (bet!=0){
-            bet = getBet();
+            
             TripleString thePull = pull();
-            display(thePull,getWinnings(thePull,bet));
+            display(thePull,(getPayMultiplier(thePull)*bet));
+            //TODO: Add bounds check
+            bet = getBet(scan);
         }
-        */
+        kthxbye();
+        scan.close();
         
-        //TODO: remove this test code after the above is completed
-        TripleString thePull = pull();
-        //TODO: remove this test code after it's placed in the display() method
-        System.out.println(thePull.getString1() + " " + thePull.getString2() + " " + thePull.getString3());
-        System.out.println();
-    }
-
-    public static int getWinnings(TripleString thePull,int bet){
-        
-        
-        return 0;
     }
     
-    public static String randString(){
+    public static void kthxbye(){
+        System.out.println("Thanks for playing.");
+    }
+    
+    private static String randString(){
         /* Weights
          * BAR      1/2  (50%)
          * cherries 1/4  (25%)
@@ -58,42 +53,74 @@ public class Assig2 {
          * 
          */
         
-        String randomSymbol="";
+        String symbol="";
+        
+        //Range threshold set to 1000 for whole numbered weights.
+        int randomNumber = (int) Math.floor(Math.random()*1000);
+        
+        //weighted starting points for symbols.
         int bar = 500;
         int cherry=250;
         int space=125;
         int seven=0;
         
-        int randomNumber = (int) Math.floor(Math.random()*1000);
+        //find symbol based on randomNumber value and weighted range
         if (randomNumber>=seven && randomNumber<space){
-            randomSymbol="7";
+            symbol="7";
         }
         if (randomNumber>=space && randomNumber<cherry){
-            randomSymbol="Space";
+            symbol="(Space)";
         }
         if (randomNumber>=cherry && randomNumber<bar){
-            randomSymbol="Cherries";
+            symbol="Cherries";
         }
         if (randomNumber>=bar){
-            randomSymbol="BAR";
+            symbol="BAR";
         }
         
-        return randomSymbol;
+        return symbol;
     }
     
 
     public static int getPayMultiplier (TripleString thePull){
         
+        /*
+         * The following combinations should pay the bet as shown 
+         * (note ORDER MATTERS):
+         * cherries  [not cherries]  [any] pays 5 × bet (5 times the bet)
+         * cherries  cherries  [not cherries] pays 15 × bet
+         * cherries  cherries  cherries pays 30 × bet
+         * BAR  BAR  BARpays 50 × bet
+         * 7  7  7 pays 100 × bet
+         */   
+        
+        if (thePull.getString1() == "Cherries" &&  
+            thePull.getString2() != "Cherries"){
+            return 5;
+        } else if (thePull.getString1() == "Cherries" &&  
+                   thePull.getString2() == "Cherries" &&  
+                   thePull.getString3() != "Cherries"){
+            return 15;
+        } else if (thePull.getString1() == "Cherries" &&  
+                   thePull.getString2() == "Cherries" &&  
+                   thePull.getString3() == "Cherries"){
+            return 30;
+         } else if (thePull.getString1() == "BAR" &&  
+                 thePull.getString2() == "BAR" &&  
+                 thePull.getString3() == "BAR"){
+             return 50;
+         } else if (thePull.getString1() == "7" &&  
+                 thePull.getString2() == "7" &&  
+                 thePull.getString3() == "7"){
+             return 100;
+         }
         return 0;
     }
-    public static int getBet(){
-        
-        Scanner scan = new Scanner(System.in);
-
-        int bet = scan.nextInt();
-        
-        scan.close();
-        return bet;
+    
+    public static int getBet(Scanner scan){
+        System.out.println("How much would you like to bet (1 - 100) or 0 to quit?");
+       
+        return scan.nextInt();
     }
     
     public static TripleString pull(){
@@ -111,7 +138,12 @@ public class Assig2 {
     }
     
     public static void display (TripleString thePull, int winnings ){
-        
+        System.out.println(thePull.toString());
+        if (winnings>0){
+            System.out.println("Congratulations! You won $" + winnings);
+        } else {
+            System.out.println("Sorry...you lost.");
+        }
     }
     
 }
@@ -133,7 +165,8 @@ class TripleString {
         pullWinnings = new int[MAX_PULLS];
     }
     
-    private boolean validString( String str ) {
+    private boolean validString(String str) {
+        //TODO: add logic here
         return false;
     }
     
