@@ -8,8 +8,8 @@
  */
 
 import java.io.*;
-import java.text.DecimalFormat;
-import java.util.Scanner;
+import java.util.*;
+import java.lang.Math;
 
 /**
  * 
@@ -42,8 +42,14 @@ public class Assig2 {
         System.out.println(thePull.getString1() + " " + thePull.getString2() + " " + thePull.getString3());
         System.out.println();
     }
+
+    public static int getWinnings(TripleString thePull,int bet){
+        
+        
+        return 0;
+    }
     
-    public static String getSlotMachineSymbol(){
+    public static String randString(){
         /* Weights
          * BAR      1/2  (50%)
          * cherries 1/4  (25%)
@@ -52,44 +58,34 @@ public class Assig2 {
          * 
          */
         
-        //TODO: find better way to do the weighted random
+        String randomSymbol="";
+        int bar = 500;
+        int cherry=250;
+        int space=125;
+        int seven=0;
         
-        //set to 1000 so weights are whole numbers.
-        String[] slotMachine = new String[1000]; 
-        int[] weight = new int[4];
-        weight[0]=500;//bar
-        weight[1]=250;//cherries
-        weight[2]=125;//space
-        weight[3]=125;//7
-        
-        String[] symbols = new String[4];
-        symbols[0] = "BAR";
-        symbols[1] = "Cherries";
-        symbols[2] = "Space";
-        symbols[3] = "7";
-        
-        int start=0;
-        int last=0;
-        for (int x=0;x<weight.length;x++){
-            for (int y=start;y<start+weight[x];y++){
-               slotMachine[y] = symbols[x];
-               last=y;
-            }
-            start=last+1;
+        int randomNumber = (int) Math.floor(Math.random()*1000);
+        if (randomNumber>=seven && randomNumber<space){
+            randomSymbol="7";
         }
-               
-        String randomSymbol=slotMachine[(int) Math.floor(Math.random()*slotMachine.length-1)];
-        slotMachine=null; //clear array
+        if (randomNumber>=space && randomNumber<cherry){
+            randomSymbol="Space";
+        }
+        if (randomNumber>=cherry && randomNumber<bar){
+            randomSymbol="Cherries";
+        }
+        if (randomNumber>=bar){
+            randomSymbol="BAR";
+        }
+        
         return randomSymbol;
     }
     
 
-    public static int getWinnings(TripleString thePull,int bet){
-        
+    public static int getPayMultiplier (TripleString thePull){
         
         return 0;
     }
-    
     public static int getBet(){
         
         Scanner scan = new Scanner(System.in);
@@ -101,11 +97,15 @@ public class Assig2 {
     }
     
     public static TripleString pull(){
-        String string1=getSlotMachineSymbol();
-        String string2=getSlotMachineSymbol();
-        String string3=getSlotMachineSymbol();
+        String string1=randString();
+        String string2=randString();
+        String string3=randString();
         
-        TripleString tripString = new TripleString(string1,string2,string3);
+        TripleString tripString = new TripleString();
+        
+        tripString.setString1(string1);
+        tripString.setString2(string2);
+        tripString.setString3(string3);
         
         return tripString;
     }
@@ -122,19 +122,50 @@ class TripleString {
     private String string2;
     private String string3;
     
-    public TripleString(String string1,String string2,String string3){
-        this.string1=string1;
-        this.string2=string2;
-        this.string3=string3;
+    public static final int MAX_LEN = 20;
+    public static final int MAX_PULLS = 40;
+    public static int[] pullWinnings;
+    
+    public TripleString(){
+        string1="";
+        string2="";
+        string3="";
+        pullWinnings = new int[MAX_PULLS];
+    }
+    
+    private boolean validString( String str ) {
+        return false;
     }
     
     public String getString1(){
         return string1;
     }
+    public void setString1(String string4){
+        this.string1=string4;
+    }
     public String getString2(){
         return string2;
+    }
+    public void setString2(String string4){
+        this.string2=string4;
     }
     public String getString3(){
         return string3;
     }
+    public void setString3(String string4){
+        this.string3=string4;
+    }
+    
+    public void saveWinnings(int winnings){
+        
+    }
+    
+    public String displayWinnings(){
+        return "";
+    }
+    
+    public String toString() {
+        return string1 + " " + string2 + " " + string3;
+    }
+    
 }
