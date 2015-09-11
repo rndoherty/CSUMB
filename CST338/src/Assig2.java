@@ -1,4 +1,3 @@
-
 /*
  * Ryan Doherty
  * rdoherty@csumb.edu
@@ -87,11 +86,11 @@ public class Assig2 {
         /*
          * The following combinations should pay the bet as shown 
          * (note ORDER MATTERS):
-         * cherries  [not cherries]  [any] pays 5 × bet (5 times the bet)
-         * cherries  cherries  [not cherries] pays 15 × bet
-         * cherries  cherries  cherries pays 30 × bet
-         * BAR  BAR  BARpays 50 × bet
-         * 7  7  7 pays 100 × bet
+         * cherries  [not cherries]  [any] pays 5 ï¿½ bet (5 times the bet)
+         * cherries  cherries  [not cherries] pays 15 ï¿½ bet
+         * cherries  cherries  cherries pays 30 ï¿½ bet
+         * BAR  BAR  BARpays 50 ï¿½ bet
+         * 7  7  7 pays 100 ï¿½ bet
          */   
         
         if (thePull.getString1() == "Cherries" &&  
