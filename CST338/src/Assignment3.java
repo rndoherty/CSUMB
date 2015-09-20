@@ -15,11 +15,9 @@ public class Assignment3
       Scanner keyboard = new Scanner(System.in);
       keyboard.close();
 
-      System.out.println();
+      //System.out.println();
 
-
-
-      runCardTest();
+      //runCardTest();
       runDeckTest();
 
    }
@@ -65,7 +63,22 @@ public class Assignment3
    //Deck Unit Test
    public static boolean DeckTest(){
        try {
-           Deck testDeck = new Deck(5);
+           int packs = 2;
+           //Deck testDeck = new Deck();
+           Deck testDeck = new Deck(packs);
+           testDeck.shuffle();
+           for (int x = 0;x<(52*packs);x++){
+               Card testCard = testDeck.dealCard();
+               //System.out.println(testCard.toString());
+           }
+           
+           Deck testDeck2 = new Deck(packs);
+           testDeck2.shuffle();
+           for (int x = 0;x<(52*packs);x++){
+               Card testCard2 = testDeck2.dealCard();
+               System.out.println(testCard2.toString());
+           }
+           
            return true;
        } catch (Exception e) {
            System.err.println( e.getMessage());

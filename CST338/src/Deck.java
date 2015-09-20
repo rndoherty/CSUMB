@@ -2,8 +2,8 @@ import java.util.*;
 
 
 public class Deck{
-    public final int MAX_CARDS = 6*52;
     private static final int PACK_SIZE=52;
+    public final int MAX_CARDS = 6*PACK_SIZE;
     private static Card[] masterPack = new Card[PACK_SIZE];
     public static boolean masterPackAllocated=false;
     
@@ -15,7 +15,7 @@ public class Deck{
     public Deck(int numPacks){
         this.cards = new Card[numPacks*PACK_SIZE];
         this.numPacks=numPacks;
-        this.topCard=numPacks*PACK_SIZE;
+        this.topCard=numPacks*PACK_SIZE-1;
         allocateMasterPack();
         init(numPacks);
     }
@@ -23,29 +23,31 @@ public class Deck{
     public Deck(){
         this.numPacks=1;
         this.cards = new Card[PACK_SIZE];
-        this.topCard=PACK_SIZE;
+        this.topCard=PACK_SIZE-1;
         allocateMasterPack();
         init(1);
     }
     
     public static void allocateMasterPack(){
         if (!masterPackAllocated) {
-                
-            for (int x=0;x<PACK_SIZE;x++){
-              //TODO: split this for suites & values
-                masterPack[x]= new Card();
+            int x = 0;
+            for (Card.Suit suit : Card.Suit.values()){
+                for (Card.Value value : Card.Value.values()){
+                    masterPack[x]= new Card(value,suit);
+                    x++;
+                }
             }
             masterPackAllocated=true;
         }
+
     }
     
     public void init(int numPacks){
         int cardNum=0;
         while (cardNum<numPacks*PACK_SIZE){
             for (int x=0;x<numPacks;x++){
-                //TODO: split this for suites & values
                 for (int y=0;y<PACK_SIZE;y++){
-                    cards[cardNum]=new Card();
+                    cards[cardNum]=masterPack[y];
                     cardNum++;
                 }
             }
