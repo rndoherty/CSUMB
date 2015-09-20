@@ -32,7 +32,7 @@ public class Deck{
         if (!masterPackAllocated) {
             int x = 0;
             for (Card.Suit suit : Card.Suit.values()){
-                for (Card.Value value : Card.Value.values()){
+                for (char value : Card.Value ) {
                     masterPack[x]= new Card(value,suit);
                     x++;
                 }

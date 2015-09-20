@@ -17,7 +17,7 @@ public class Assignment3
 
       //System.out.println();
 
-      //runCardTest();
+      runCardTest();
       runDeckTest();
 
    }
@@ -31,20 +31,22 @@ public class Assignment3
       }
    }
    
-
    //Card Unit Test
    public static boolean CardTest(){
 
-      Card.Value queen = Card.Value.Q;
-      Card.Value nine = Card.Value.NINE;
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
+      Card.Suit diamonds = Card.Suit.diamonds;
 
       try {
-         Card testCard1 = new Card(queen, club);
-         Card testCard2 = new Card(nine, spade);
-         testCard1.getSuit();
-         testCard2.getValue();
+         Card testCard0 = new Card();
+         Card testCard1 = new Card('0', club);
+         Card testCard2 = new Card('J', spade);
+         Card testCard3 = new Card('Y', diamonds);
+         System.out.println(testCard0);
+         System.out.println(testCard1);
+         System.out.println(testCard2);
+         System.out.println(testCard3);
          return true;
       } catch (Exception e) {
          return false;
