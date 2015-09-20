@@ -16,7 +16,6 @@ public class Assignment3
       keyboard.close();
 
       System.out.println();
-      
       runDeckTest();
       
    }
@@ -30,19 +29,13 @@ public class Assignment3
        }
    }
    
-   //Deck Unit Test
+   //Deck Test
    public static boolean DeckTest(){
        try {
-           Deck testDeck = new Deck();
-           
-           //testDeck.setDeckSize(52);
-           
-           for (int x = 0;x<52;x++){
-               Card newCard = new Card();
-               testDeck.addCard(newCard);
-           }
+           Deck testDeck = new Deck(5);
            return true;
        } catch (Exception e) {
+           System.err.println( e.getMessage());
            return false;
        }
    }
