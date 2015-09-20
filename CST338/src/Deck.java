@@ -77,9 +77,10 @@ public class Deck{
         Card testCard = new Card();
         try {
             testCard=cards[k];
-            testCard.errorFlag=false;
+            //TODO: reconcile with Card class
+            //testCard.errorFlag=false;
         } catch (Exception e){
-            testCard.errorFlag=true;
+            //testCard.errorFlag=true;
         }
         return testCard;
     }
