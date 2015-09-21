@@ -1,23 +1,23 @@
-import java.util.*;
-
 public class Card
 {
    public enum Suit { clubs, diamonds, hearts, spades }
-   public enum Value { A, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE,
-      J, Q, K }
 
-   private Value value;
+   // Adding this array so we can know what values are valid
+   public static char[] Value = {'A', '1', '2', '3', '4', '5', '6', '7', '8',
+      '9', 'J', 'Q', 'K'};
+
+   private char value;
    private Suit suit;
    private boolean errorFlag;
 
    public Card()
    {
-      value = Value.A;
+      value = 'A';
       suit = Suit.spades;
       errorFlag = false;
    }
 
-   public Card(Value value, Suit suit)
+   public Card(char value, Suit suit)
    {
       if ( !set(value, suit) )
          throw new IllegalArgumentException();
@@ -31,7 +31,7 @@ public class Card
       return(value + " of " + suit);
    }
 
-   public boolean set(Value value, Suit suit)
+   public boolean set(char value, Suit suit)
    {
       if ( isValid( value, suit) )
       {
@@ -48,7 +48,7 @@ public class Card
       return suit;
    }
 
-   public Value getValue()
+   public char getchar()
    {
       return value;
    }
@@ -65,13 +65,13 @@ public class Card
       return false;
    }
 
-   private boolean isValid(Value value, Suit suit)
+   private boolean isValid(char value, Suit suit)
    {
-      Value[] v = Value.values();
       Suit[] s = Suit.values();
-      for (int i = 0 ; i < v.length; i++)
+
+      for ( int i = 0 ; i < Value.length; i++ )
       {
-         if (value == v[i])
+         if (Value[i] == this.value)
             return true;
       }
 

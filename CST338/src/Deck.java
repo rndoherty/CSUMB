@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 public class Deck{
     private static final int PACK_SIZE=52;
     public final int MAX_CARDS = 6*PACK_SIZE;
@@ -35,7 +34,7 @@ public class Deck{
         if (!masterPackAllocated) {
             int x = 0;
             for (Card.Suit suit : Card.Suit.values()){
-                for (Card.Value value : Card.Value.values()){
+                for (char value : Card.Value ) {
                     masterPack[x]= new Card(value,suit);
                     x++;
                 }
