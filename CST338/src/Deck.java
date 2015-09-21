@@ -5,9 +5,6 @@ public class Deck{
     public final int MAX_CARDS = 6*PACK_SIZE;
     private static Card[] masterPack = new Card[PACK_SIZE];
     public static boolean masterPackAllocated=false;
-    
-    public enum wrong {
-        THIRTEEN};
         
     private Card[] cards;
     
@@ -78,15 +75,11 @@ public class Deck{
     }
     
     public Card inspectCard(int k){
-        
         Card testCard; 
         try {
             testCard=cards[k];
-            //TODO: reconcile with Card class
-            //testCard.errorFlag=false;
         } catch (Exception e){
-            //testCard.errorFlag=true;
-            testCard = new Card(wrong.THIRTEEN,Card.Suit.spades);
+            testCard = new Card('y', Card.Suit.spades);
         }
         return testCard;
     }

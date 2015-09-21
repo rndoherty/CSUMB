@@ -15,16 +15,16 @@ public class Assignment3
       Scanner keyboard = new Scanner(System.in);
       keyboard.close();
 
-      //System.out.println();
-
+      System.out.println("** CARD TEST **");
       runCardTest();
+      System.out.println();
+      System.out.println("** DECK TEST **");
       runDeckTest();
-
    }
 
    public static void runCardTest()
    {
-      if (CardTest()){
+      if (cardTest()){
          System.out.println("passed");
       } else {
          System.out.println("failed");
@@ -32,7 +32,7 @@ public class Assignment3
    }
    
    //Card Unit Test
-   public static boolean CardTest(){
+   public static boolean cardTest(){
 
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
@@ -55,7 +55,7 @@ public class Assignment3
 
    public static void runDeckTest(){
 
-      if (DeckTest()){
+      if (deckTest()){
          System.out.println("passed");
       } else {
          System.out.println("failed");
@@ -63,27 +63,37 @@ public class Assignment3
    }
 
    //Deck Unit Test
-   public static boolean DeckTest(){
+   public static boolean deckTest(){
        try {
-           int packs = 2;
-           //Deck testDeck = new Deck();
-           Deck testDeck = new Deck(packs);
-           testDeck.shuffle();
-           for (int x = 0;x<(52*packs);x++){
+           int packs = 8;
+           Deck testDeck = new Deck();
+           System.out.println("1 deck unshuffled");
+           for (int x = 0;x<(52);x++){
                Card testCard = testDeck.dealCard();
-               //System.out.println(testCard.toString());
+               System.out.print(" | " + testCard + " ");
+               if (((x+1)%5)==0){
+                   System.out.print(" | " );
+                   System.out.println();
+                   }
            }
-           
+
+           System.out.println();
+           System.out.println(packs + " decks shuffled");
            Deck testDeck2 = new Deck(packs);
            testDeck2.shuffle();
            for (int x = 0;x<(52*packs);x++){
                Card testCard2 = testDeck2.dealCard();
-               System.out.println(testCard2.toString());
+               System.out.print(" | " + testCard2 + " ");
+               if (((x+1)%5)==0){
+                   System.out.print(" | " );
+                   System.out.println();
+                   }
            }
-           
+               
+
+           System.out.println();
            return true;
        } catch (Exception e) {
-           System.err.println( e.getMessage());
            return false;
        }
    }
