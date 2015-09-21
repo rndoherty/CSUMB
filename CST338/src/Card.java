@@ -5,7 +5,8 @@ public class Card
    public enum Suit { clubs, diamonds, hearts, spades }
 
    // Adding this array so we can know what values are valid
-   public static char[] Value = {'A', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'};
+   public static char[] Value = {'A', '1', '2', '3', '4', '5', '6', '7', '8',
+      '9', 'J', 'Q', 'K'};
 
    private char value;
    private Suit suit;
