@@ -1,3 +1,6 @@
+/*
+   Set valid suits and values for each card in a standard deck
+ */
 public class Card
 {
    // Valid suits
