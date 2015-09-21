@@ -48,10 +48,12 @@ class Hand {
       return result;
    }
 
+   // Accessor for number of cards
    public int getNumCards() {
       return numCards;
    }
 
+   // Accessor for each card
    public Card inspectCard(int k) {
       Card card;
       if (k <= numCards) {
