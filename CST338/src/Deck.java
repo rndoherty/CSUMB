@@ -12,11 +12,9 @@ public class Deck{
     private int numPacks;
     
     public Deck(int numPacks){
-        this.cards = new Card[numPacks*PACK_SIZE];
-        this.numPacks=numPacks;
-        this.topCard=numPacks*PACK_SIZE-1;
-        allocateMasterPack();
+        
         init(numPacks);
+        allocateMasterPack();
     }
 
     public Deck(){
@@ -42,6 +40,9 @@ public class Deck{
     }
     
     public void init(int numPacks){
+        this.cards = new Card[numPacks*PACK_SIZE];
+        this.numPacks=numPacks;
+        this.topCard=numPacks*PACK_SIZE-1;
         int cardNum=0;
         while (cardNum<numPacks*PACK_SIZE){
             for (int x=0;x<numPacks;x++){

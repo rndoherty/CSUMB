@@ -5,7 +5,6 @@
 */
 
 import java.util.*;
-
 public class Assignment3
 {
 
@@ -16,24 +15,15 @@ public class Assignment3
       keyboard.close();
 
       System.out.println("** CARD TEST **");
-      runCardTest();
+      cardTest();
       System.out.println();
       System.out.println("** DECK TEST **");
-      runDeckTest();
+      deckTest();
       System.out.println();
    }
 
-   public static void runCardTest()
-   {
-      if (cardTest()){
-         System.out.println("passed");
-      } else {
-         System.out.println("failed");
-      }
-   }
-   
-   //Card Unit Test
-   public static boolean cardTest(){
+   //Card Test
+   public static void cardTest(){
 
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
@@ -47,55 +37,81 @@ public class Assignment3
       System.out.println(testCard1);
       System.out.println(testCard2);
       System.out.println(testCard3);
-      return true;
    }
 
-   public static void runDeckTest(){
+   //Deck Test
+   public static void deckTest(){
 
-      if (deckTest()){
-         System.out.println("passed");
-      } else {
-         System.out.println("failed");
-      }
-   }
-
-   //Deck Unit Test
-   public static boolean deckTest(){
-       try {
-           int packs = 8;
-           Deck testDeck = new Deck();
-           System.out.println("1 deck unshuffled");
-           for (int x = 0;x<(52);x++){
-               Card testCard = testDeck.dealCard();
-               System.out.print(" | " + testCard + " ");
-               if (((x+1)%5)==0){
-                   System.out.print(" | " );
-                   System.out.println();
-                   }
-           }
-
-           System.out.println();
-           System.out.println();
-           System.out.println(packs + " decks shuffled");
+       //TODO: Fix tests
+           int packs = 2;
+           System.out.println(packs + " decks unshuffled");
            Deck testDeck2 = new Deck(packs);
+           //testDeck2.shuffle();
+           for (int i=0;i<packs;i++){    
+               for (int x = 0;x<52;x++){
+                   Card testCard2 = testDeck2.dealCard();
+                   System.out.print(" / " + testCard2 + " ");
+                   if (((x+1)%5)==0){
+                       System.out.print(" / " );
+                       System.out.println();
+                       }
+               }
+               System.out.print(" / " );
+               System.out.println();
+               System.out.println();
+           }
+           
+
+           System.out.println(packs + " decks shuffled");
+           //Deck testDeck2 = new Deck(packs);
+           testDeck2.init(packs);
            testDeck2.shuffle();
            for (int i=0;i<packs;i++){    
                for (int x = 0;x<52;x++){
                    Card testCard2 = testDeck2.dealCard();
-                   System.out.print(" | " + testCard2 + " ");
+                   System.out.print(" / " + testCard2 + " ");
                    if (((x+1)%5)==0){
-                       System.out.print(" | " );
+                       System.out.print(" / " );
                        System.out.println();
                        }
                }
+               System.out.print(" / " );
                System.out.println();
                System.out.println();
            }
+           
+           Deck testDeck = new Deck();
+           System.out.println("1 deck unshuffled");
+           for (int x = 0;x<(52);x++){
+               Card testCard = testDeck.dealCard();
+               System.out.print(" / " + testCard + " ");
+               if (((x+1)%5)==0){
+                   System.out.print(" / " );
+                   System.out.println();
+                   }
+           }
+           System.out.print(" / " );
            System.out.println();
-           return true;
-       } catch (Exception e) {
-           return false;
-       }
+           System.out.println();
+
+          // Deck testDeck = new Deck();
+           System.out.println("1 deck shuffled");
+           testDeck.shuffle();
+           for (int x = 0;x<(52);x++){
+               Card testCard = testDeck.dealCard();
+               System.out.print(" / " + testCard + " ");
+               if (((x+1)%5)==0){
+                   System.out.print(" / " );
+                   System.out.println();
+                   }
+           }
+           System.out.print(" / " );
+           System.out.println();
+           System.out.println();
+           
+           
+           
+           System.out.println();
    }
 
 }
