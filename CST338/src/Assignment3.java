@@ -37,20 +37,16 @@ public class Assignment3
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
       Card.Suit diamonds = Card.Suit.diamonds;
+      Card testCard0 = new Card();
+      Card testCard1 = new Card('0', club);
+      Card testCard2 = new Card('J', spade);
+      Card testCard3 = new Card('Y', diamonds);
 
-      try {
-         Card testCard0 = new Card();
-         Card testCard1 = new Card('0', club);
-         Card testCard2 = new Card('J', spade);
-         Card testCard3 = new Card('Y', diamonds);
-         System.out.println(testCard0);
-         System.out.println(testCard1);
-         System.out.println(testCard2);
-         System.out.println(testCard3);
-         return true;
-      } catch (Exception e) {
-         return false;
-      }
+      System.out.println(testCard0);
+      System.out.println(testCard1);
+      System.out.println(testCard2);
+      System.out.println(testCard3);
+      return true;
    }
 
    public static void runDeckTest(){

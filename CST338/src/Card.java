@@ -19,8 +19,7 @@ public class Card
 
    public Card(char value, Suit suit)
    {
-      if ( !set(value, suit) )
-         throw new IllegalArgumentException();
+      errorFlag = !set(value, suit);
    }
 
    public String toString()
@@ -37,7 +36,6 @@ public class Card
       {
          this.value = value;
          this.suit = suit;
-         errorFlag = false;
          return true;
       }
       return false;
@@ -60,25 +58,29 @@ public class Card
 
    public boolean equals(Card card)
    {
-      if (card.value == value && card.suit == suit)
-         return true;
-      return false;
+      return card.value == value && card.suit == suit;
    }
 
    private boolean isValid(char value, Suit suit)
    {
-      Suit[] s = Suit.values();
+      boolean valid = false;
 
-      for ( int i = 0 ; i < Value.length; i++ )
+      for ( char v : Value )
       {
-         if (Value[i] == this.value)
-            return true;
+         if (value == v)
+         {
+             valid = true;
+             break;
+         }
       }
 
-      for (int i = 0 ; i < s.length; i++)
+      if (valid)
       {
-         if (suit == s[i])
-            return true;
+         for (Suit s : Suit.values())
+         {
+            if (suit == s)
+               return true;
+         }
       }
       return false;
    }
