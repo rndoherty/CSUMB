@@ -15,6 +15,7 @@ public class Assignment3
       Scanner keyboard = new Scanner(System.in);
       keyboard.close();
 
+      //Call test runs for Card, Hand, and Deck
       System.out.println("** CARD TEST **");
       runCardTest();
       System.out.println();
@@ -59,19 +60,19 @@ public class Assignment3
       }
    }
 
-   //Deck Unit Test
+   //Deck Unit Test - Loop through 2 packs unshuffled and 8 packs shuffled
    public static boolean deckTest(){
        try {
            int packs = 8;
            Deck testDeck = new Deck();
            System.out.println("1 deck unshuffled");
-           for (int x = 0;x<(52);x++){
+           for (int x = 0; x < (52); x++){
                Card testCard = testDeck.dealCard();
                System.out.print(" | " + testCard + " ");
-               if (((x+1)%5)==0){
+               if (((x + 1) %5) == 0){
                    System.out.print(" | " );
                    System.out.println();
-                   }
+               }
            }
 
            System.out.println();
@@ -79,14 +80,14 @@ public class Assignment3
            System.out.println(packs + " decks shuffled");
            Deck testDeck2 = new Deck(packs);
            testDeck2.shuffle();
-           for (int i=0;i<packs;i++){    
-               for (int x = 0;x<52;x++){
+           for (int i = 0; i < packs; i++){
+               for (int x = 0; x < 52; x++){
                    Card testCard2 = testDeck2.dealCard();
                    System.out.print(" | " + testCard2 + " ");
-                   if (((x+1)%5)==0){
+                   if (((x + 1) %5) == 0){
                        System.out.print(" | " );
                        System.out.println();
-                       }
+                   }
                }
                System.out.println();
                System.out.println();
@@ -97,6 +98,4 @@ public class Assignment3
            return false;
        }
    }
-
 }
-
