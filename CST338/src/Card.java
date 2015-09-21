@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Card
 {
    public enum Suit { clubs, diamonds, hearts, spades }

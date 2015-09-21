@@ -1,13 +1,3 @@
-public class Assignment3 {
-   public static void main(String[] args) {
-
-   }
-}
-
-class Card {
-
-}
-
 class Hand {
    public static final int MAX_CARDS = 50; //Length of array
 
