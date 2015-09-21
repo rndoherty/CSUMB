@@ -14,6 +14,7 @@ public class Assignment3
       Scanner keyboard = new Scanner(System.in);
       keyboard.close();
 
+      //Call test runs for Card, Hand, and Deck
       System.out.println("** CARD TEST **");
       cardTest();
       System.out.println();
@@ -42,6 +43,7 @@ public class Assignment3
    //Deck Test
    public static void deckTest(){
 
+<<<<<<< HEAD
        //TODO: Fix tests
            int packs = 2;
            System.out.println(packs + " decks unshuffled");
@@ -59,6 +61,28 @@ public class Assignment3
                System.out.print(" / " );
                System.out.println();
                System.out.println();
+=======
+      if (deckTest()){
+         System.out.println("passed");
+      } else {
+         System.out.println("failed");
+      }
+   }
+
+   //Deck Unit Test - Loop through 2 packs unshuffled and 8 packs shuffled
+   public static boolean deckTest(){
+       try {
+           int packs = 8;
+           Deck testDeck = new Deck();
+           System.out.println("1 deck unshuffled");
+           for (int x = 0; x < (52); x++){
+               Card testCard = testDeck.dealCard();
+               System.out.print(" | " + testCard + " ");
+               if (((x + 1) %5) == 0){
+                   System.out.print(" | " );
+                   System.out.println();
+               }
+>>>>>>> origin/master
            }
            
 
@@ -66,14 +90,20 @@ public class Assignment3
            //Deck testDeck2 = new Deck(packs);
            testDeck2.init(packs);
            testDeck2.shuffle();
-           for (int i=0;i<packs;i++){    
-               for (int x = 0;x<52;x++){
+           for (int i = 0; i < packs; i++){
+               for (int x = 0; x < 52; x++){
                    Card testCard2 = testDeck2.dealCard();
+<<<<<<< HEAD
                    System.out.print(" / " + testCard2 + " ");
                    if (((x+1)%5)==0){
                        System.out.print(" / " );
+=======
+                   System.out.print(" | " + testCard2 + " ");
+                   if (((x + 1) %5) == 0){
+                       System.out.print(" | " );
+>>>>>>> origin/master
                        System.out.println();
-                       }
+                   }
                }
                System.out.print(" / " );
                System.out.println();
@@ -113,6 +143,4 @@ public class Assignment3
            
            System.out.println();
    }
-
 }
-

@@ -1,5 +1,9 @@
+/*
+   Set valid suits and values for each card in a standard deck
+ */
 public class Card
 {
+   // Valid suits
    public enum Suit { clubs, diamonds, hearts, spades }
 
    // Adding this array so we can know what values are valid
@@ -10,6 +14,7 @@ public class Card
    private Suit suit;
    private boolean errorFlag;
 
+   // Default Constructor
    public Card()
    {
       value = 'A';
@@ -17,11 +22,13 @@ public class Card
       errorFlag = false;
    }
 
+   // Overloaded Constructor
    public Card(char value, Suit suit)
    {
       errorFlag = !set(value, suit);
    }
 
+   // Output message - invalid or display card
    public String toString()
    {
       if (errorFlag)
@@ -30,6 +37,7 @@ public class Card
       return(value + " of " + suit);
    }
 
+   // Set and check the validity of the card
    public boolean set(char value, Suit suit)
    {
       if ( isValid( value, suit) )
@@ -41,6 +49,7 @@ public class Card
       return false;
    }
 
+   // Accessors for suit, value, and error
    public Suit getSuit()
    {
       return suit;
@@ -56,11 +65,13 @@ public class Card
       return errorFlag;
    }
 
+   // Both this value and suit objects are equal to passed in objects
    public boolean equals(Card card)
    {
       return card.value == value && card.suit == suit;
    }
 
+   // Check if card has valid value and suit
    private boolean isValid(char value, Suit suit)
    {
       boolean valid = false;
