@@ -7,6 +7,9 @@ public class Deck{
     private static Card[] masterPack = new Card[PACK_SIZE];
     public static boolean masterPackAllocated=false;
     
+    public enum wrong {
+        THIRTEEN};
+        
     private Card[] cards;
     
     private int topCard;
@@ -76,13 +79,15 @@ public class Deck{
     }
     
     public Card inspectCard(int k){
-        Card testCard = new Card();
+        
+        Card testCard; 
         try {
             testCard=cards[k];
             //TODO: reconcile with Card class
             //testCard.errorFlag=false;
         } catch (Exception e){
             //testCard.errorFlag=true;
+            testCard = new Card(wrong.THIRTEEN,Card.Suit.spades);
         }
         return testCard;
     }
