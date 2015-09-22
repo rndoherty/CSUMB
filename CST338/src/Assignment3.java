@@ -29,9 +29,9 @@ public class Assignment3
       Deck deck = new Deck();
       Hand[] playerHand = new Hand[players];
     
-      while (deck.getTopCard()>0){
+      while (deck.getTopCard()>=0){
           for (int x=0;x<players;x++){
-              if (deck.getTopCard()==0) break;
+              if (deck.getTopCard()<0) break;
               if (playerHand[x]==null){
                  playerHand[x]=new Hand();
              }
@@ -45,12 +45,13 @@ public class Assignment3
       for (int y=0;y<players;y++){
           System.out.println(playerHand[y]);
       }
+      
       Hand[] playerHand2 = new Hand[players];
       deck.init(1);
       deck.shuffle();
-      while (deck.getTopCard()>0){
+      while (deck.getTopCard()>=0){
           for (int x=0;x<players;x++){
-              if (deck.getTopCard()==0) break;
+             if (deck.getTopCard()<0) break;
               if (playerHand2[x]==null){
                  playerHand2[x]=new Hand();
              }

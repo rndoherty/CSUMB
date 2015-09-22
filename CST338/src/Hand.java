@@ -2,7 +2,7 @@
    Hand class - Hand size, add cards to hand, and play cards from hands
  */
 class Hand {
-   public static final int MAX_CARDS = 50; //Length of array
+   public static final int MAX_CARDS = 100; //Length of array
 
    private Card[] myCards;
    private int numCards;
