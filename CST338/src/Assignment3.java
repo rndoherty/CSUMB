@@ -22,6 +22,30 @@ public class Assignment3
       System.out.println();
       int myInt = getInputInt();
       System.out.println(myInt);
+      
+      Deck deck = new Deck();
+      Hand[] playerHand = new Hand[myInt];
+      /*int x=0;
+      while (deck.getTopCard()>0){
+          System.out.println("card: " + deck.getTopCard());
+             if (playerHand[x]==null){
+                 System.out.println(x);
+                 playerHand[x]=new Hand();
+             }
+             playerHand[x].takeCard(deck.dealCard());
+             if (x==myInt){
+                 x=0;
+              }else{
+                 x++;
+              }
+
+             System.out.println(" --" + x);
+      }
+      
+      for (int y=0;y<myInt;y++){
+          System.out.println(playerHand[y]);
+      }*/
+      
       keyboard.close();
    }
 
@@ -80,7 +104,6 @@ public class Assignment3
                System.out.print(" / " );
                System.out.println();
                System.out.println();
-
            }
 
            System.out.println(packs + " decks shuffled");
@@ -129,8 +152,7 @@ public class Assignment3
            System.out.println();
            System.out.println();
            
-           
-           
            System.out.println();
    }
+   
 }

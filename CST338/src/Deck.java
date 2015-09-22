@@ -44,7 +44,6 @@ public class Deck {
             }
             masterPackAllocated = true;
         }
-
     }
 
     //Initialize and Re-populate cards array
@@ -57,7 +56,6 @@ public class Deck {
             for (int x=0;x<numPacks;x++){
                 for (int y=0;y<PACK_SIZE;y++){
                     cards[cardNum]=masterPack[y];
-
                     cardNum++;
                 }
             }
