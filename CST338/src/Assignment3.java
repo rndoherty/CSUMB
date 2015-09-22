@@ -5,11 +5,11 @@
 */
 
 import java.util.*;
+
 public class Assignment3
 {
 
    private static Scanner keyboard = new Scanner(System.in);
-
    public static void main(String[] args)
    {
 
@@ -17,12 +17,15 @@ public class Assignment3
       System.out.println("** CARD TEST **");
       cardTest();
       System.out.println();
+      System.out.println("** HAND TEST **");
+      handTest();
+      System.out.println();
       System.out.println("** DECK TEST **");
       deckTest();
       System.out.println();
       int myInt = getInputInt();
       System.out.println(myInt);
-      
+     
       Deck deck = new Deck();
       Hand[] playerHand = new Hand[myInt];
       /*int x=0;
@@ -47,6 +50,7 @@ public class Assignment3
       }*/
       
       keyboard.close();
+
    }
 
    public static int getInputInt()
@@ -67,7 +71,7 @@ public class Assignment3
       }
       return inputInt;
    }
-
+   
    //Card Test
    public static void cardTest(){
 
@@ -83,6 +87,42 @@ public class Assignment3
       System.out.println(testCard1);
       System.out.println(testCard2);
       System.out.println(testCard3);
+      
+   }
+
+   //Hand Test
+   public static boolean handTest() {
+      Card.Suit club = Card.Suit.clubs;
+      Card.Suit spade = Card.Suit.spades;
+      Card.Suit diamonds = Card.Suit.diamonds;
+
+      Card testCard1 = new Card('T', spade);
+      Card testCard2 = new Card('K', club);
+      Card testCard3 = new Card('2', diamonds);
+      Hand testHand = new Hand();
+
+
+      for (int i = 0; i <= testHand.MAX_CARDS; i++) {
+         if (testHand.takeCard(testCard1) &&
+               testHand.takeCard(testCard2) &&
+               testHand.takeCard(testCard3)) ;
+      }
+      System.out.println("Hand full");
+      System.out.println("After deal");
+      System.out.println(testHand);
+      System.out.println();
+      System.out.println(testHand.inspectCard(29));
+      System.out.println(testHand.inspectCard(2));
+      System.out.println(testHand.inspectCard(13));
+
+      for (int i = testHand.MAX_CARDS; i > 0; i--) {
+
+         System.out.println("Playing " + testHand.playCard());
+      }
+      System.out.println();
+      System.out.println("After playing all cards");
+      System.out.println(testHand);
+      return true;
    }
 
    //Deck Test 
@@ -104,6 +144,7 @@ public class Assignment3
                System.out.print(" / " );
                System.out.println();
                System.out.println();
+
            }
 
            System.out.println(packs + " decks shuffled");
@@ -154,5 +195,4 @@ public class Assignment3
            
            System.out.println();
    }
-   
 }
