@@ -738,7 +738,7 @@ Hand = ( )
 How many hands? (1 - 10, please): 10
 10
 
-10 hands from shuffled deck.
+10 hands from unshuffled deck.
 Hand = ( K of spades, 3 of spades, 6 of hearts, 9 of diamonds, Q of clubs, 2 of clubs )
 Hand = ( Q of spades, 2 of spades, 5 of hearts, 8 of diamonds, J of clubs, A of clubs )
 Hand = ( J of spades, A of spades, 4 of hearts, 7 of diamonds, T of clubs )
