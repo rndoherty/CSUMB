@@ -13,11 +13,6 @@ public class Deck {
     
     private int topCard;
     private int numPacks;
-<<<<<<< HEAD
-    
-    public Deck(int numPacks){
-        
-=======
 
     // Constructor for initial numPacks
     public Deck(int numPacks) {
@@ -25,9 +20,7 @@ public class Deck {
         this.numPacks = numPacks;
         this.topCard = numPacks * PACK_SIZE - 1;
         allocateMasterPack();
->>>>>>> origin/master
         init(numPacks);
-        allocateMasterPack();
     }
 
     // Overloaded Default Constructor
@@ -53,8 +46,8 @@ public class Deck {
         }
 
     }
-<<<<<<< HEAD
-    
+
+    //Initialize and Re-populate cards array
     public void init(int numPacks){
         this.cards = new Card[numPacks*PACK_SIZE];
         this.numPacks=numPacks;
@@ -64,16 +57,7 @@ public class Deck {
             for (int x=0;x<numPacks;x++){
                 for (int y=0;y<PACK_SIZE;y++){
                     cards[cardNum]=masterPack[y];
-=======
 
-    // Re-populate cards array
-    public void init(int numPacks) {
-        int cardNum = 0;
-        while (cardNum < numPacks * PACK_SIZE) {
-            for (int x = 0; x < numPacks; x++){
-                for (int y = 0; y < PACK_SIZE; y++){
-                    cards[cardNum] = masterPack[y];
->>>>>>> origin/master
                     cardNum++;
                 }
             }
