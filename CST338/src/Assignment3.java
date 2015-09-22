@@ -8,11 +8,10 @@ import java.util.*;
 public class Assignment3
 {
 
+   private static Scanner keyboard = new Scanner(System.in);
+
    public static void main(String[] args)
    {
-
-      Scanner keyboard = new Scanner(System.in);
-      keyboard.close();
 
       //Call test runs for Card, Hand, and Deck
       System.out.println("** CARD TEST **");
@@ -21,6 +20,28 @@ public class Assignment3
       System.out.println("** DECK TEST **");
       deckTest();
       System.out.println();
+      int myInt = getInputInt();
+      System.out.println(myInt);
+      keyboard.close();
+   }
+
+   public static int getInputInt()
+   {
+      System.out.print("How many hands? (1 - 10, please): ");
+      int inputInt = 0;
+      while (inputInt < 1 || inputInt > 10)
+      {
+         try {
+            inputInt = keyboard.nextInt();
+         } catch (InputMismatchException e) {
+            // Flushes previous input
+            keyboard.nextLine();
+            inputInt = 0;
+         }
+         if (inputInt < 1 || inputInt > 10)
+            System.out.print("Please enter a value between 1-10: ");
+      }
+      return inputInt;
    }
 
    //Card Test
