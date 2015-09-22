@@ -64,7 +64,8 @@ public class Assignment3
       return inputInt;
    }
 
-   public static void deckHandTest(int players, Deck deck, Hand[] hand, String shuffleState)
+   public static void deckHandTest(int players, Deck deck,
+      Hand[] hand, String shuffleState)
    {
       while (deck.getTopCard() >= 0)
       {
