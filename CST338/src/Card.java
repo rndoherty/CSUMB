@@ -4,11 +4,14 @@
 public class Card
 {
    // Valid suits
-   public enum Suit { clubs, diamonds, hearts, spades }
+   public enum Suit
+   {
+      clubs, diamonds, hearts, spades
+   }
 
    // Adding this array so we can know what values are valid
    public static char[] Value = {'A', '2', '3', '4', '5', '6', '7', '8',
-      '9', 'T', 'J', 'Q', 'K'};
+         '9', 'T', 'J', 'Q', 'K'};
 
    private char value;
    private Suit suit;
@@ -32,15 +35,15 @@ public class Card
    public String toString()
    {
       if (errorFlag)
-         return("[ invalid ]");
+         return ("[ invalid ]");
 
-      return(value + " of " + suit);
+      return (value + " of " + suit);
    }
 
    // Set and check the validity of the card
    public boolean set(char value, Suit suit)
    {
-      if ( isValid( value, suit) )
+      if (isValid(value, suit))
       {
          this.value = value;
          this.suit = suit;
@@ -76,12 +79,12 @@ public class Card
    {
       boolean valid = false;
 
-      for ( char v : Value )
+      for (char v : Value)
       {
          if (value == v)
          {
-             valid = true;
-             break;
+            valid = true;
+            break;
          }
       }
 

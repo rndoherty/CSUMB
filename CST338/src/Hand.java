@@ -1,29 +1,35 @@
 /*
    Hand class - Hand size, add cards to hand, and play cards from hands
  */
-class Hand {
-   public static final int MAX_CARDS = 100; //Length of array
+class Hand
+{
+   public static final int MAX_CARDS = 52; //Length of array
 
    private Card[] myCards;
    private int numCards;
 
    // Default constructor
-   public Hand() {
+   public Hand()
+   {
       myCards = new Card[MAX_CARDS];   //Length
       numCards = 0;
    }
 
    // Remove all cards from the hand
-   public void resetHand() {
+   public void resetHand()
+   {
       myCards = new Card[MAX_CARDS];
       numCards = 0;
    }
 
    // Adds a card to the next available position as an object copy
-   public boolean takeCard(Card card) {
-      if (numCards >= MAX_CARDS) {
+   public boolean takeCard(Card card)
+   {
+      if (numCards >= MAX_CARDS)
+      {
          return false;
-      } else {
+      } else
+      {
          myCards[numCards] = card;
          numCards++;
          return true;
@@ -31,38 +37,47 @@ class Hand {
    }
 
    // Returns and removes the card in the top occupied position
-   public Card playCard() {
+   public Card playCard()
+   {
       Card card = myCards[numCards - 1];
-      myCards[numCards -1] = null;
+      myCards[numCards - 1] = null;
       numCards--;
       return card;
    }
 
    // Output message
-   public String toString() {
+   public String toString()
+   {
       String result = "Hand = ( ";
-      if (numCards == 0) {
+      if (numCards == 0)
+      {
          result = result + ")";
-      } else {
-         for (int i = 0; i < numCards - 1; i++) {
+      } else
+      {
+         for (int i = 0; i < numCards - 1; i++)
+         {
             result = result + myCards[i] + ",";
          }
-         result = result + myCards[numCards -1] + ")";
+         result = result + myCards[numCards - 1] + ")";
       }
       return result;
    }
 
    // Accessor for number of cards
-   public int getNumCards() {
+   public int getNumCards()
+   {
       return numCards;
    }
 
    // Accessor for each card
-   public Card inspectCard(int k) {
+   public Card inspectCard(int k)
+   {
       Card card;
-      if (k <= numCards) {
+      if (k <= numCards)
+      {
          card = new Card('y', Card.Suit.spades);
-      } else {
+      } else
+      {
          card = myCards[k - 1];
       }
       return card;
