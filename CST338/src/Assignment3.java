@@ -28,26 +28,22 @@ public class Assignment3
      
       Deck deck = new Deck();
       Hand[] playerHand = new Hand[myInt];
-      /*int x=0;
+    
       while (deck.getTopCard()>0){
-          System.out.println("card: " + deck.getTopCard());
-             if (playerHand[x]==null){
-                 System.out.println(x);
+          for (int x=0;x<myInt;x++){
+              if (deck.getTopCard()==0) break;
+              if (playerHand[x]==null){
                  playerHand[x]=new Hand();
              }
              playerHand[x].takeCard(deck.dealCard());
-             if (x==myInt){
-                 x=0;
-              }else{
-                 x++;
-              }
-
-             System.out.println(" --" + x);
+             if (x==myInt){x=0;}
+          }
+             
       }
       
       for (int y=0;y<myInt;y++){
           System.out.println(playerHand[y]);
-      }*/
+      }
       
       keyboard.close();
 
@@ -91,7 +87,7 @@ public class Assignment3
    }
 
    //Hand Test
-   public static boolean handTest() {
+   public static void handTest() {
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
       Card.Suit diamonds = Card.Suit.diamonds;
@@ -122,7 +118,7 @@ public class Assignment3
       System.out.println();
       System.out.println("After playing all cards");
       System.out.println(testHand);
-      return true;
+      
    }
 
    //Deck Test 
