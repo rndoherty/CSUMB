@@ -31,13 +31,13 @@ public class Assignment3
       // Phase 4 Deck+Hand Test
       Deck deck = new Deck();
       Hand[] playerHand = new Hand[players];
-      deckHandTest(players, deck, playerHand);
+      deckHandTest(players, deck, playerHand, "unshuffled");
 
       // Test with shuffled Deck
       Hand[] playerHand2 = new Hand[players];
       deck.init(1);
       deck.shuffle();
-      deckHandTest(players, deck, playerHand2);
+      deckHandTest(players, deck, playerHand2, "shuffled");
 
       keyboard.close();
 
@@ -64,7 +64,7 @@ public class Assignment3
       return inputInt;
    }
 
-   public static void deckHandTest(int players, Deck deck, Hand[] hand)
+   public static void deckHandTest(int players, Deck deck, Hand[] hand, String shuffleState)
    {
       while (deck.getTopCard() >= 0)
       {
@@ -84,7 +84,7 @@ public class Assignment3
 
       }
       System.out.println();
-      System.out.println(players + " hands from shuffled deck.");
+      System.out.println(players + " hands from " + shuffleState + " deck.");
       for (int y = 0; y < players; y++)
       {
          System.out.println(hand[y]);
