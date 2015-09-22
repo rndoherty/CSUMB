@@ -5,47 +5,39 @@
 */
 
 import java.util.*;
+
 public class Assignment3
 {
-
-   private static Scanner keyboard = new Scanner(System.in);
 
    public static void main(String[] args)
    {
 
+      Scanner keyboard = new Scanner(System.in);
+      keyboard.close();
+
       //Call test runs for Card, Hand, and Deck
       System.out.println("** CARD TEST **");
-      cardTest();
+      runCardTest();
+      System.out.println();
+      System.out.println("** HAND TEST **");
+      runHandTest();
       System.out.println();
       System.out.println("** DECK TEST **");
-      deckTest();
+      runDeckTest();
       System.out.println();
-      int myInt = getInputInt();
-      System.out.println(myInt);
-      keyboard.close();
    }
 
-   public static int getInputInt()
+   public static void runCardTest()
    {
-      System.out.print("How many hands? (1 - 10, please): ");
-      int inputInt = 0;
-      while (inputInt < 1 || inputInt > 10)
-      {
-         try {
-            inputInt = keyboard.nextInt();
-         } catch (InputMismatchException e) {
-            // Flushes previous input
-            keyboard.nextLine();
-            inputInt = 0;
-         }
-         if (inputInt < 1 || inputInt > 10)
-            System.out.print("Please enter a value between 1-10: ");
+      if (cardTest()){
+         System.out.println("passed");
+      } else {
+         System.out.println("failed");
       }
-      return inputInt;
    }
-
-   //Card Test
-   public static void cardTest(){
+   
+   //Card Unit Test
+   public static boolean cardTest(){
 
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
@@ -59,78 +51,89 @@ public class Assignment3
       System.out.println(testCard1);
       System.out.println(testCard2);
       System.out.println(testCard3);
+      return true;
    }
 
-   //Deck Test 
-   //Loop through 2 packs unshuffled then shuffled
-   //Loop through 1 pack unshuffled then shuffled
-   public static void deckTest(){
+   public static void runDeckTest(){
 
-           int packs = 2;
-           System.out.println(packs + " decks unshuffled");
-           Deck testDeck2 = new Deck(packs);
-           for (int i=0;i<packs;i++){    
-               for (int x = 0;x<52;x++){
-                   System.out.print(" / " + testDeck2.dealCard() + " ");
-                   if (((x+1)%5)==0){
-                       System.out.print(" / " );
-                       System.out.println();
-                       }
+      if (deckTest()){
+         System.out.println("passed");
+      } else {
+         System.out.println("failed");
+      }
+   }
+
+   //Hand Unit Test
+   public static boolean handTest() {
+      Card.Suit club = Card.Suit.clubs;
+      Card.Suit spade = Card.Suit.spades;
+      Card.Suit diamonds = Card.Suit.diamonds;
+
+      Card testCard1 = new Card('T', spade);
+      Card testCard2 = new Card('K', club);
+      Card testCard3 = new Card('2', diamonds);
+      Hand testHand = new Hand();
+
+
+      for (int i = 0; i <= testHand.MAX_CARDS; i++) {
+         if (testHand.takeCard(testCard1) &&
+               testHand.takeCard(testCard2) &&
+               testHand.takeCard(testCard3)) ;
+      }
+      System.out.println("Hand full");
+      System.out.println("After deal");
+      System.out.println(testHand);
+      System.out.println();
+      System.out.println(testHand.inspectCard(29));
+      System.out.println(testHand.inspectCard(2));
+      System.out.println(testHand.inspectCard(13));
+
+      for (int i = testHand.MAX_CARDS; i > 0; i--) {
+
+         System.out.println("Playing " + testHand.playCard());
+      }
+      System.out.println();
+      System.out.println("After playing all cards");
+      System.out.println(testHand);
+      return true;
+   }
+
+   //Deck Unit Test - Loop through 2 packs unshuffled and 8 packs shuffled
+   public static boolean deckTest(){
+       try {
+           int packs = 8;
+           Deck testDeck = new Deck();
+           System.out.println("1 deck unshuffled");
+           for (int x = 0; x < (52); x++){
+               Card testCard = testDeck.dealCard();
+               System.out.print(" | " + testCard + " ");
+               if (((x + 1) %5) == 0){
+                   System.out.print(" | " );
+                   System.out.println();
                }
-               System.out.print(" / " );
-               System.out.println();
-               System.out.println();
-
            }
 
+           System.out.println();
+           System.out.println();
            System.out.println(packs + " decks shuffled");
-           testDeck2.init(packs);
+           Deck testDeck2 = new Deck(packs);
            testDeck2.shuffle();
            for (int i = 0; i < packs; i++){
                for (int x = 0; x < 52; x++){
-                   System.out.print(" / " + testDeck2.dealCard() + " ");
-                   if (((x+1)%5)==0){
-                       System.out.print(" / " );
-
+                   Card testCard2 = testDeck2.dealCard();
+                   System.out.print(" | " + testCard2 + " ");
+                   if (((x + 1) %5) == 0){
+                       System.out.print(" | " );
                        System.out.println();
                    }
                }
-               System.out.print(" / " );
                System.out.println();
                System.out.println();
            }
-           
-           Deck testDeck = new Deck();
-           System.out.println("1 deck unshuffled");
-           for (int x = 0;x<(52);x++){
-               Card testCard = testDeck.dealCard();
-               System.out.print(" / " + testCard + " ");
-               if (((x+1)%5)==0){
-                   System.out.print(" / " );
-                   System.out.println();
-                   }
-           }
-           System.out.print(" / " );
            System.out.println();
-           System.out.println();
-
-           System.out.println("1 deck shuffled");
-           testDeck.init(1);
-           testDeck.shuffle();
-           for (int x = 0;x<(52);x++){
-               Card testCard = testDeck.dealCard();
-               System.out.print(" / " + testCard + " ");
-               if (((x+1)%5)==0){
-                   System.out.print(" / " );
-                   System.out.println();
-                   }
-           }
-           System.out.print(" / " );
-           System.out.println();
-           System.out.println();
-           
-           
-           
-           System.out.println();
+           return true;
+       } catch (Exception e) {
+           return false;
+       }
    }
 }
