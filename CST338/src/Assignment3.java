@@ -23,26 +23,46 @@ public class Assignment3
       System.out.println("** DECK TEST **");
       deckTest();
       System.out.println();
-      int myInt = getInputInt();
-      System.out.println(myInt);
+      int players = getInputInt();
+      System.out.println(players);
      
       Deck deck = new Deck();
-      Hand[] playerHand = new Hand[myInt];
+      Hand[] playerHand = new Hand[players];
     
       while (deck.getTopCard()>0){
-          for (int x=0;x<myInt;x++){
+          for (int x=0;x<players;x++){
               if (deck.getTopCard()==0) break;
               if (playerHand[x]==null){
                  playerHand[x]=new Hand();
              }
              playerHand[x].takeCard(deck.dealCard());
-             if (x==myInt){x=0;}
+             if (x==players){x=0;}
           }
              
       }
-      
-      for (int y=0;y<myInt;y++){
+      System.out.println();
+      System.out.println(players + " hands from unshuffled deck.");
+      for (int y=0;y<players;y++){
           System.out.println(playerHand[y]);
+      }
+      Hand[] playerHand2 = new Hand[players];
+      deck.init(1);
+      deck.shuffle();
+      while (deck.getTopCard()>0){
+          for (int x=0;x<players;x++){
+              if (deck.getTopCard()==0) break;
+              if (playerHand2[x]==null){
+                 playerHand2[x]=new Hand();
+             }
+             playerHand2[x].takeCard(deck.dealCard());
+             if (x==players){x=0;}
+          }
+             
+      }
+      System.out.println();
+      System.out.println(players + " hands from shuffled deck.");
+      for (int y=0;y<players;y++){
+          System.out.println(playerHand2[y]);
       }
       
       keyboard.close();
