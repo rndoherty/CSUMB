@@ -137,9 +137,11 @@ public class Assignment3
       System.out.println("After deal");
       System.out.println(testHand);
       System.out.println();
-      System.out.println(testHand.inspectCard(29));
-      System.out.println(testHand.inspectCard(2));
-      System.out.println(testHand.inspectCard(13));
+      System.out.println(testHand.inspectCard(80));
+      System.out.println(testHand.inspectCard(101));
+      System.out.println(testHand.inspectCard(0));
+      System.out.println(testHand.inspectCard(120));
+      System.out.println();
 
       for (int i = Hand.MAX_CARDS; i > 0; i--)
       {
@@ -412,12 +414,12 @@ class Hand
    public Card inspectCard(int k)
    {
       Card card;
-      if (k <= numCards)
+      if (k > numCards)
       {
          card = new Card('y', Card.Suit.spades);
       } else
       {
-         card = myCards[k - 1];
+         card = myCards[k];
       }
       return card;
    }
@@ -528,12 +530,10 @@ class Deck
    public Card inspectCard(int k)
    {
       Card testCard;
-      try
-      {
-         testCard = cards[k];
-      } catch (Exception e)
-      {
-         testCard = new Card('y', Card.Suit.spades);
+      if (k>cards.length || k>topCard){
+          testCard = new Card('y', Card.Suit.spades);
+      } else {
+          testCard = cards[k];
       }
       return testCard;
    }
@@ -551,9 +551,11 @@ Hand full
 After deal
 Hand = ( T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades, K of clubs, 2 of diamonds, T of spades )
 
+2 of diamonds
 [ invalid ]
+T of spades
 [ invalid ]
-[ invalid ]
+
 Playing T of spades
 Playing 2 of diamonds
 Playing K of clubs
