@@ -1,34 +1,36 @@
-/*
-   Team: Robert Contreras, Hyo Lee, Ryan Doherty
+/**
    CST 338 - Fall 2015 Session A
    Assignment 3, Card Game
+   @author Robert Contreras
+   @author Ryan Doherty
+   @author Hyo Lee
 */
 
 import java.util.*;
 
 public class Assignment3
 {
-
    private static Scanner keyboard = new Scanner(System.in);
 
    public static void main(String[] args)
    {
-
       //Call test runs for Card, Hand, and Deck
+      // Phase 1 test
       System.out.println("** CARD TEST **");
       cardTest();
       System.out.println();
+      // Phase 2 test
       System.out.println("** HAND TEST **");
       handTest();
       System.out.println();
+      // Phase 3 test
       System.out.println("** DECK TEST **");
       deckTest();
       System.out.println();
+      // Phase 4 test
       System.out.println("** DECK + HAND TEST **");
       int players = getInputInt();
       System.out.println(players);
-
-      // Phase 4 Deck+Hand Test
       Deck deck = new Deck();
       Hand[] playerHand = new Hand[players];
       deckHandTest(players, deck, playerHand, "unshuffled");
@@ -40,19 +42,22 @@ public class Assignment3
       deckHandTest(players, deck, playerHand2, "shuffled");
 
       keyboard.close();
-
    }
 
+   // Input validation method for Phase 4 tests
    public static int getInputInt()
    {
       System.out.print("How many hands? (1 - 10, please): ");
       int inputInt = 0;
       while (inputInt < 1 || inputInt > 10)
       {
+         // Use an exception to insure proper int input
          try
          {
             inputInt = keyboard.nextInt();
-         } catch (InputMismatchException e)
+         }
+         // If anything but an int...
+         catch (InputMismatchException e)
          {
             // Flushes previous input
             keyboard.nextLine();
@@ -64,6 +69,7 @@ public class Assignment3
       return inputInt;
    }
 
+   // Phase 4 testing method
    public static void deckHandTest(int players, Deck deck,
       Hand[] hand, String shuffleState)
    {
@@ -95,7 +101,6 @@ public class Assignment3
    //Card Test
    public static void cardTest()
    {
-
       Card.Suit club = Card.Suit.clubs;
       Card.Suit spade = Card.Suit.spades;
       Card.Suit diamonds = Card.Suit.diamonds;
@@ -108,7 +113,6 @@ public class Assignment3
       System.out.println(testCard1);
       System.out.println(testCard2);
       System.out.println(testCard3);
-
    }
 
    //Hand Test
@@ -122,7 +126,6 @@ public class Assignment3
       Card testCard2 = new Card('K', club);
       Card testCard3 = new Card('2', diamonds);
       Hand testHand = new Hand();
-
 
       for (int i = 0; i <= Hand.MAX_CARDS; i++)
       {
@@ -154,7 +157,6 @@ public class Assignment3
    //Loop through 1 pack unshuffled then shuffled
    public static void deckTest()
    {
-
       int packs = 2;
       System.out.println(packs + " decks unshuffled");
       Deck testDeck2 = new Deck(packs);
