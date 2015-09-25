@@ -543,7 +543,7 @@ class Deck
    public Card inspectCard(int k)
    {
       Card testCard;
-      if (k>cards.length || k>topCard || k<0)
+      if (k>topCard || k<0)
       {
           testCard = new Card('y', Card.Suit.spades);
       }
