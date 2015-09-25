@@ -372,12 +372,14 @@ class Hand
       }
       else
       {
-         myCards[numCards] = card;
+         Card newCard = new Card(card.getchar(), card.getSuit());
+         myCards[numCards] = newCard;
          numCards++;
          return true;
       }
    }
-
+   
+   
    // Returns and removes the card in the top occupied position
    public Card playCard()
    {
@@ -416,7 +418,7 @@ class Hand
    public Card inspectCard(int k)
    {
       Card card;
-      if (k > numCards)
+      if (k > numCards || k<0)
       {
          card = new Card('y', Card.Suit.spades);
       }
@@ -435,7 +437,8 @@ class Hand
 class Deck
 {
    private static final int PACK_SIZE = 52;
-   public final int MAX_CARDS = 6 * PACK_SIZE;
+   public final int MAX_DECKS = 6;
+   public final int MAX_CARDS = MAX_DECKS * PACK_SIZE;
    private static Card[] masterPack = new Card[PACK_SIZE];
    public static boolean masterPackAllocated = false;
 
@@ -447,6 +450,9 @@ class Deck
    // Constructor for initial numPacks
    public Deck(int numPacks)
    {
+      //if numPacks is passed an invalid value,
+      //default it to 1
+      if (numPacks<0 || numPacks>MAX_DECKS) numPacks=1;
       this.cards = new Card[numPacks * PACK_SIZE];
       this.numPacks = numPacks;
       this.topCard = numPacks * PACK_SIZE - 1;
@@ -485,6 +491,10 @@ class Deck
    //Initialize and Re-populate cards array
    public void init(int numPacks)
    {
+
+       //if numPacks is passed an invalid value,
+       //default it to 1
+      if (numPacks<0 || numPacks>MAX_DECKS) numPacks=1;
       this.cards = new Card[numPacks * PACK_SIZE];
       this.numPacks = numPacks;
       this.topCard = numPacks * PACK_SIZE - 1;
@@ -533,7 +543,7 @@ class Deck
    public Card inspectCard(int k)
    {
       Card testCard;
-      if (k>cards.length || k>topCard)
+      if (k>cards.length || k>topCard || k<0)
       {
           testCard = new Card('y', Card.Suit.spades);
       }
